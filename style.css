@@ -8,17 +8,17 @@ html, body {
 }
 
 #bar-div{
+  max-height: 65px;
   display: flex;
   justify-content:space-between;
   align-items: center;
   background-color: rgb(0, 0, 0);
 }
 #bar-title{
-  margin: 1% 1.5%;
   color: white;
 }
 #bar-button{
-  margin: 1% 1.5%;
+  margin: 1% 5%;
 }
 
 #profile-div{
@@ -93,7 +93,7 @@ html, body {
   width: 100%;
 }
 
-.content-div{
+.content-block{
   display: block;
   background-color: rgb(255, 255, 255);
   padding: 20px;
@@ -101,9 +101,9 @@ html, body {
   border-radius: 15px;
   box-shadow: 5px 5px 10px rgb(0 0 0 / 20%);
   -webkit-appearance: none;
+  max-width: 700px;
   
 }
-
 
 table{
   width:100%;
@@ -115,6 +115,31 @@ table{
   overflow-x:auto;
   margin-top: 0px;
   border: 1px solid rgba(255,255,255,0.3);
+}
+
+button {
+  background-color: #7ec780; /* Green */
+  border: none;
+  color: rgb(0, 0, 0);
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.section-title{
+  font-size: 20px;;
+}
+
+
+.list-icon{
+  max-width: 30px;
+  max-height: 30px;
+}
+
+.list-label{
+  padding-left: 0.5rem;
 }
 
 

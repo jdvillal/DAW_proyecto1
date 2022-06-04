@@ -13,7 +13,9 @@
 
   <div id="bar-div">
     <h1 id="bar-title">Proyecto DAW</h1>
-    <button id="bar-button">Contacto</button>
+    <form action="#formulario-div">
+      <button id="bar-button">Contacto</button>
+    </form>
   </div>
 
   <div id="profile-div">
@@ -23,20 +25,29 @@
   </div>
 
 
-  <div id="descripcion-div" class="content-div">
-    <h3>Descripción</h3>
-    <span>
-      Estudiante de ingeniería en computación en la Escuela Superior Politecnica del Litoral. Me gusta la
-    </span><a href="#lenguajes-list-div">programación</a><span> de bajo nivel.</span>
-    <span>
-      Suelo hablar, leer y trabajar en </span><a>proyectos</a><span> relacionados con hardware y mi pasatimpo 
-      es </span> <a href="#coleccion-table-div">coleccionar</a> <span> computadoras y consolas antiguas, en especial de la era de los 8-bits.</span>
-    </span>
+  <div id="descripcion-div" class="content-block">
+    <h3 class="section-title">Descripción</h3>
+    <p>
+      Estudiante de ingeniería en computación en la Escuela Superior Politecnica del Litoral. Me gusta la 
+      programación de bajo nivel. Suelo hablar, leer y trabajar en proyectos relacionados con hardware y mi pasatimpo 
+      es coleccionar computadoras y consolas antiguas, en especial de la era de los 8-bits.
+    <p>
+    <ul id="descripcion-list">
+      <li>
+        <img src="images/languages.png" class="list-icon"><a class="list-label">Lenguajes de programación preferidos</a>
+      </li>
+      <li>
+        <img src="images/coleccion.png" class="list-icon"><a class="list-label">Mi colección retro</a>
+      </li>
+      <li>
+        <img src="images/project.png" class="list-icon"><a class="list-label">Algunos proyectos personales</a>
+      </li>
+    </ul>
   </div>
 
-  <div id="lenguajes-list-div" class="content-div">
+  <div id="lenguajes-list-div" class="content-block">
     <ul id="lenguajes-list">
-      <h4>Lenguajes de programación favoritos:</h4>
+      <h4 class="section-title">Lenguajes de programación favoritos:</h4>
       <li>C</li>
       <li>Java</li>
       <li>Swift</li>
@@ -45,8 +56,8 @@
     </ul>
   </div>
 
-  <div id="coleccion-table-div" class="content-div">
-    <h4 id="coleccion-title">Favoritos de mi colección</h4>
+  <div id="coleccion-table-div" class="content-block">
+    <h4 id="coleccion-title" class="section-title">Algunos miembros de mi colección</h4>
     <table id="coleccion-table"  border="1">
       <tr class="table-header">
         <th>Computador / Consola</td>
@@ -86,8 +97,8 @@
     </table>
   </div>
 
-  <div id="formulario-div" class="content-div">
-    <h4 class="form-field">Puedes dejar cualquier mensaje o pregunta aquí:</h4>
+  <div id="formulario-div" class="content-block">
+    <h4 class="form-field section-title">Puedes dejar cualquier mensaje o pregunta aquí:</h4>
     <form id="formulario">
       <input id="Nombre" type="text" class="form-field" placeholder="Nombre">
       <input id="correo" type="email" class="form-field" placeholder="Correo electronico">
