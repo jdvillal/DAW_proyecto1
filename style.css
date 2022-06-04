@@ -1,0 +1,38 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+#formulario{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  row-gap: 0.5rem;
+  column-gap: 0.5rem;
+}
+.form-field{
+  width: 100%;
+}
+
+.form-button-div{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.form-button{
+  width: 40%;
+}
+
+
+#coleccion-table-div{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  row-gap: 0.5rem;
+  column-gap: 0.5rem;
+}
+
+#coleccion-table{
+  width: 80%;
+}
+
