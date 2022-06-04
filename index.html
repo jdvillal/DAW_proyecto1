@@ -10,18 +10,20 @@
 
 <body>
   <script src="script.js"></script>
-  <div>
-    <h1>DAW</h1>
-    <button>Contacto</button>
+
+  <div id="bar-div">
+    <h1 id="bar-title">Proyecto DAW</h1>
+    <button id="bar-button">Contacto</button>
   </div>
 
-  <div>
-    <img src="banner.png">
-    <h2>My portfolio page</h2>
+  <div id="profile-div">
+    <img id="banner-img" class="profile-element" src="images/banner.png">
+    <img id="profile-img" class="profile-element" src="images/profile.jpg">
+    <h2 id="profile-name" class="profile-element">Jorge Villalta</h2>
   </div>
 
 
-  <div>
+  <div id="descripcion-div" class="content-div">
     <h3>Descripción</h3>
     <span>
       Estudiante de ingeniería en computación en la Escuela Superior Politecnica del Litoral. Me gusta la
@@ -32,7 +34,7 @@
     </span>
   </div>
 
-  <div id="lenguajes-list-div">
+  <div id="lenguajes-list-div" class="content-div">
     <ul id="lenguajes-list">
       <h4>Lenguajes de programación favoritos:</h4>
       <li>C</li>
@@ -43,37 +45,38 @@
     </ul>
   </div>
 
-  <div id="coleccion-table-div">
-    <table id="coleccion-table" border="1">
-      <tr>
-        <td>Computador/Consola</td>
-        <td>Año</td>
-        <td>Arquitectura</td>
-        <td>Procesador @Frecuencia</td>
-        <td>Memoria RAM</td>
+  <div id="coleccion-table-div" class="content-div">
+    <h4 id="coleccion-title">Favoritos de mi colección</h4>
+    <table id="coleccion-table"  border="1">
+      <tr class="table-header">
+        <th>Computador / Consola</td>
+        <th>Año</td>
+        <th>Arquitectura</td>
+        <th>Procesador @Frecuencia</td>
+        <th>Memoria RAM</td>
       </tr>
-      <tr>
+      <tr class="table-content">
         <td>Atari 2600</td>
         <td>1977</td>
         <td>8-bits</td>
         <td>MOS 6507 @1.19Mhz</td>
         <td>128 Bytes</td>
       </tr>
-      <tr>
+      <tr class="table-content">
         <td>Commodore VIC-20</td>
         <td>1980</td>
         <td>8-bits</td>
         <td>MOS 6502 @1.02 Mhz</td>
         <td>5 Kilobytes</td>
       </tr> 
-      <tr>
+      <tr class="table-content">
         <td>Commodore 64</td>
         <td>1982</td>
         <td>8-bits</td>
         <td>MOS 6510 @1.02 Mhz</td>
         <td>64 Kilobytes</td>
       </tr>    
-      <tr>
+      <tr class="table-content">
         <td>SNES</td>
         <td>1990</td>
         <td>16-bits</td>
@@ -83,7 +86,7 @@
     </table>
   </div>
 
-  <div id="formulario-div">
+  <div id="formulario-div" class="content-div">
     <h4 class="form-field">Puedes dejar cualquier mensaje o pregunta aquí:</h4>
     <form id="formulario">
       <input id="Nombre" type="text" class="form-field" placeholder="Nombre">
