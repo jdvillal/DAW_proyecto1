@@ -5,12 +5,14 @@ html, body {
   width: 100%;
   background-color: #f7f7f7;
   font-family: Nunito,sans-serif;
+ align-items: center;
 }
 
 #bar-div{
   max-height: 65px;
   display: flex;
   justify-content:space-between;
+  padding: 0 2.5%;
   align-items: center;
   background-color: rgb(0, 0, 0);
 }
@@ -26,7 +28,7 @@ html, body {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  row-gap: -1rem;
+  /*row-gap: -1rem;*/
 }
 .profile-element{
   width: 100%;
@@ -89,19 +91,14 @@ html, body {
   width: 100%;
   margin: 5%;
 }
-#coleccion-title{
-  width: 100%;
-}
 
 .content-block{
   display: block;
   background-color: rgb(255, 255, 255);
-  padding: 20px;
   margin: 10px;
+  padding: 20px;
   border-radius: 15px;
   box-shadow: 5px 5px 10px rgb(0 0 0 / 20%);
-  -webkit-appearance: none;
-  max-width: 700px;
   
 }
 
@@ -118,7 +115,7 @@ table{
 }
 
 button {
-  background-color: #7ec780; /* Green */
+  background: #7ec780; /* Green */
   border: none;
   color: rgb(0, 0, 0);
   padding: 8px 20px;
@@ -129,7 +126,8 @@ button {
 }
 
 .section-title{
-  font-size: 20px;;
+  font-size: 20px;
+  width: 100%;
 }
 
 
@@ -142,4 +140,32 @@ button {
   padding-left: 0.5rem;
 }
 
+#content-div{
+  display: grid;
+  /*max-width: 1000px;*/
+  margin: 0 5%;
+  row-gap: 0.5rem;
+  column-gap: 0.5rem;
+  grid-template-areas: 
+  "a a b"
+  "c c b"
+  "d d .";
+  grid-template-columns: 35% 35% 30%;
+  /*align-items: center;*/
+  /*justify-content: center;*/
+}
+
+#resumen-div{
+  grid-area: a;
+}
+#lenguajes-list-div{
+  grid-area: c;
+}
+#coleccion-table-div{
+  grid-area: d;
+}
+#formulario-div{
+  grid-area: b;
+ 
+}
 
