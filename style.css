@@ -8,6 +8,10 @@ html, body {
  align-items: center;
 }
 
+p{
+  text-align: justify;
+}
+
 #bar-div{
   max-height: 65px;
   display: flex;
@@ -130,10 +134,15 @@ button {
   width: 100%;
 }
 
-
-.list-icon{
-  max-width: 30px;
-  max-height: 30px;
+.img-icon{
+  max-width: 50px;
+  max-height: 50px;
+}
+#redes-div{
+  display: flex;
+  width: 100%;
+  column-gap: 10px;
+  justify-content: left;
 }
 
 .list-label{
@@ -142,17 +151,21 @@ button {
 
 #content-div{
   display: grid;
-  /*max-width: 1000px;*/
-  margin: 0 5%;
+  max-width: 1000px;
+  margin: auto;
   row-gap: 0.5rem;
   column-gap: 0.5rem;
   grid-template-areas: 
   "a a b"
   "c c b"
-  "d d .";
+  "d d b";
   grid-template-columns: 35% 35% 30%;
   /*align-items: center;*/
   /*justify-content: center;*/
+}
+
+.side-element{
+  margin-bottom: 50px;
 }
 
 #resumen-div{
@@ -164,7 +177,7 @@ button {
 #coleccion-table-div{
   grid-area: d;
 }
-#formulario-div{
+#side-div{
   grid-area: b;
  
 }
