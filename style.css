@@ -5,7 +5,34 @@ html, body {
   width: 100%;
   background-color: #e4e4e4;
   font-family: Nunito,sans-serif;
- align-items: center;
+  align-items: center;
+  
+}
+
+* , *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*Estilo del footer*/
+footer{
+  background-color: rgb(22, 22, 22);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.footer-element{
+  display: block;
+  margin: 1rem 1rem;
+  width: 20%;
+}
+.footer-text{
+  color: white;
+  text-justify:inherit;
+}
+#footer-logo{
+  max-width: 8rem;
 }
 
 p{
@@ -16,8 +43,42 @@ span{
   text-align: justify;
 }
 
-#bar-div{
-  max-height: 65px;
+/*Estilo de listas*/
+ul{
+  margin: 0 0 0 0;
+  padding-left: 2rem;
+}
+
+/*Estilo de la tabla*/
+table{
+  border:none;
+  border-spacing: 10px 0;
+  padding: 8px;
+  
+}
+th{
+  border: none;
+  padding:10px 0;
+  background-color: #ac9d49;
+  color: white;
+  text-align: left;
+}
+td{
+  display: table-cell;
+  padding:1rem 0 1rem 0;
+  border:none;
+  text-align: left;
+  vertical-align: inherit;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+tr:hover {
+  background-color: coral;
+}
+
+/*Barra superior*/
+#bar-header{
   display: flex;
   justify-content:space-between;
   padding: 0 2.5%;
@@ -31,12 +92,12 @@ span{
   margin: 1% 5%;
 }
 
-#profile-div{
+/*Barra perfil*/
+#profile-header{
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  /*row-gap: -1rem;*/
 }
 .profile-element{
   width: 100%;
@@ -65,50 +126,88 @@ span{
   font-size: 26px;
 }
 
-#select-pais-div{
+/*Bloques de contenido*/
+.content-section{
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  /*justify-content: space-between;*/
+  background-color: rgb(255, 255, 255);
+  margin: 10px;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px rgb(0 0 0 / 20%);
 }
-#pais-select-title{
+.section-element{
   display: block;
-  justify-self: auto;
-}
-#pais-select{
-  display: block;
-  justify-self: auto;
+  width: 100%
 }
 
+#redes-icon-div{
+  display: flex;
+  column-gap: 2%;
+}
+.img-icon{
+  display: block;
+  width: 5%;
+}
+.app-icon{
+  display: block;
+  margin:  0 0 1.5rem 0;
 
+}
+
+/*mapa*/
+#mapa{
+  border-radius: 2%;
+}
+
+/*Coleccion section */
+#coleccion-img{
+  border-radius: 10px;
+  display: block;
+  width: 95%;
+}
+#coleccion-table-div{
+  width: 95%;
+  margin:1rem;
+}
+
+/*Seccion contenido*/
+#contenido-sec{
+  display:block;
+  
+}
+/*seccion formulario*/
+#form-sec{
+  display: block;
+  justify-content: center;
+  background-color: #f5f4f4;
+}
 #formulario{
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  row-gap: 0.5rem;
-  column-gap: 0.5rem;
 }
-.form-field{
+.form-element{
   width: 100%;
 }
-
-.form-button-div{
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
 .form-button{
-  width: 40%;
+  width: 30%;
+  text-align: center;
 }
 
-button {
-  background: #7ec780; /* Green */
-  border: none;
-  color: rgb(0, 0, 0);
-  padding: 8px 20px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  cursor: pointer;
+
+button{
+  background-color: #8fa2cc;
+  border: 0;
+  border-radius: 6px;
+  padding: 8px 25px;
+  font-weight: 400;
+  color: #fff;
+  font-size: 18px;
+  display: block;
+  margin: 16px auto 0;
+  cursor: pointer
 }
 
 .text-input{
@@ -117,107 +216,125 @@ button {
   background-color: #fff;
   border: 1px solid #c4c4c4;
   font-size: 16px;
-  padding: 10px 16px;
+  padding: 15px 15px;
   box-sizing: border-box;
-  margin-bottom: 0px;
+  margin-bottom: 5px;
   margin-top: 5px;
   color: #000;
   font-weight: 300;
 }
 
-#coleccion-table-div{
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  row-gap: 0.5rem;
-  column-gap: 0.5rem;
-}
-#coleccion-img{
-  display: block;
-  border-radius: 15px;
-  width: 90%;
-}
-#coleccion-table{
-  display: block;
+textarea{
+  color: #000;
+  border-radius: 6px;
+  background-color: #fff;
+  border: 1px solid #c4c4c4;
   width: 100%;
-  margin: 5%;
-}
-
-.content-block{
-  display: block;
-  background-color: rgb(255, 255, 255);
-  margin: 10px;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 5px 5px 10px rgb(0 0 0 / 20%);
-  
-}
-
-.section-title{
-  font-size: 20px;
-  width: 100%;
-}
-.section-subtitle{
+  height: 100px;
   font-size: 16px;
-  width: 100%
+  padding: 12px 16px;
+  box-sizing: border-box;
+  max-width: 100%;
+  min-width: 100%;
+  font-weight: 300;
 }
 
-.img-icon{
-  max-width: 50px;
-  max-height: 50px;
-}
-#redes-div{
-  display: flex;
-  width: 100%;
-  column-gap: 10px;
-  justify-content: left;
-}
-
-.list-label{
-  padding-left: 0.5rem;
-}
-
-#content-div{
-  display: grid;
+#body-div{
   max-width: 1000px;
-  padding: 0px 10px;
   margin: auto;
-  row-gap: 0.5rem;
+  display: grid;
   column-gap: 0.5rem;
+  row-gap: 0.5rem;
   grid-template-areas: 
   "a a b"
   "c c b"
   "d d b"
-  "e e b";
-  grid-template-columns: 35% 35% 30%;
-  /*align-items: center;*/
-  /*justify-content: center;*/
+  "e e b"
+  "f f b";
+  grid-template-columns: 1.1fr 1.1fr 1fr;
 }
-
-.side-element{
-  margin-bottom: 50px;
-}
-
-
-#resumen-div{
+#resumen-sec{
   grid-area: a;
 }
-#lenguajes-list-div{
+#espol-sec{
   grid-area: c;
 }
-#proyectos-div{
-
-  grid-area:d
+#proyectos-sec{
+  grid-area: d;
 }
-.app-icon{
-  display: block;
-  margin: 10px 10px 20px 0px;
-}
-#coleccion-table-div{
+#coleccion-sec{
   grid-area: e;
+}
+#form-sec{
+  grid-area: f;
 }
 #side-div{
   grid-area: b;
- 
+  background-color: #f5f4f4;
 }
+
+#coleccion-table{
+  border-collapse: collapse;
+}
+
+@media (max-width: 600px){
+  /* Styles */
+  #body-div{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  #resumen-sec{
+    width: 100%;
+  }
+  #proyectos-sec{
+    width: 100%;
+  }
+  #coleccion-sec{
+    width: 100%;
+  }
+  #side-div{
+    width: 100%;
+  }
+
+  footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  #footer-logo-div{
+    display: none
+  }
+ 
+  #footer-div-2{
+    width: 99%;
+    display: block;
+  }
+  #footer-div-3{
+    width: 99%;
+    display: block;
+  }
+}
+
+@media (max-width: 950px){
+  /* Styles */
+  footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  #footer-logo-div{
+    display: none
+  }
+ 
+  #footer-div-2{
+    display: block;
+    width: 40%;
+  }
+  #footer-div-3{
+    display: block;
+    width: 49%
+  }
+}
+
 
