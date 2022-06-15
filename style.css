@@ -28,10 +28,12 @@ footer{
   width: 20%;
 }
 .footer-text{
+  display: block;
   color: white;
   text-justify:inherit;
 }
 #footer-logo{
+  display: block;
   max-width: 8rem;
 }
 
@@ -168,8 +170,11 @@ tr:hover {
   width: 95%;
 }
 #coleccion-table-div{
-  width: 95%;
+  width: 100%;
   margin:1rem;
+}
+#coleccion-table{
+  border-collapse: collapse;
 }
 
 /*Seccion contenido*/
@@ -239,102 +244,10 @@ textarea{
   font-weight: 300;
 }
 
-#body-div{
-  max-width: 1000px;
-  margin: auto;
-  display: grid;
-  column-gap: 0.5rem;
-  row-gap: 0.5rem;
-  grid-template-areas: 
-  "a a b"
-  "c c b"
-  "d d b"
-  "e e b"
-  "f f b";
-  grid-template-columns: 1.1fr 1.1fr 1fr;
-}
-#resumen-sec{
-  grid-area: a;
-}
-#espol-sec{
-  grid-area: c;
-}
-#proyectos-sec{
-  grid-area: d;
-}
-#coleccion-sec{
-  grid-area: e;
-}
-#form-sec{
-  grid-area: f;
-}
-#side-div{
-  grid-area: b;
-  background-color: #f5f4f4;
-}
 
-#coleccion-table{
-  border-collapse: collapse;
-}
 
-@media (max-width: 600px){
-  /* Styles */
-  #body-div{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  #resumen-sec{
-    width: 100%;
-  }
-  #proyectos-sec{
-    width: 100%;
-  }
-  #coleccion-sec{
-    width: 100%;
-  }
-  #side-div{
-    width: 100%;
-  }
 
-  footer{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-  #footer-logo-div{
-    display: none
-  }
- 
-  #footer-div-2{
-    width: 99%;
-    display: block;
-  }
-  #footer-div-3{
-    width: 99%;
-    display: block;
-  }
-}
 
-@media (max-width: 950px){
-  /* Styles */
-  footer{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-  #footer-logo-div{
-    display: none
-  }
- 
-  #footer-div-2{
-    display: block;
-    width: 40%;
-  }
-  #footer-div-3{
-    display: block;
-    width: 49%
-  }
-}
+
 
 
