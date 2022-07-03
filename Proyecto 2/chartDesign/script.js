@@ -44,7 +44,6 @@ let cargarGrafico = ()=> {
             break;
         }
     }
-    console.log(t_0);
 
     let fiatOptions = document.getElementsByName('chart-fiat-selector-radiobutton');
     let fiat;
@@ -58,7 +57,6 @@ let cargarGrafico = ()=> {
             break;
         }
     }
-    console.log(fiat);
 
     let typeOptions = document.getElementsByName('chart-type-selector-radiobutton');
     let type;
@@ -72,10 +70,8 @@ let cargarGrafico = ()=> {
             break;
         }
     }
-    console.log(type);
     
     let coin_id = document.getElementById('coin-select').value;
-    console.log(coin_id);
 
     if(coin_id == -1){
         return;
@@ -85,7 +81,6 @@ let cargarGrafico = ()=> {
     fetch(url)
     .then(response => response.json())
     .then(data=>{
-        console.log(data);
 
         var xValues = [];
         var yValues = [];
@@ -141,3 +136,29 @@ document.getElementById('coin-select').addEventListener('change', (event)=>{
     cargarGrafico();
     //getSelectedTime();
 });
+
+
+
+let chart_time_buttons = document.getElementsByName('chart-time-selector-radiobutton');
+let chart_fiat_buttons = document.getElementsByName('chart-fiat-selector-radiobutton');
+let chart_type_buttons = document.getElementsByName('chart-type-selector-radiobutton');
+
+console.log(chart_time_buttons);
+console.log(chart_fiat_buttons);
+console.log(chart_type_buttons);
+
+for(let i = 0; i < chart_time_buttons.length; i++){
+    chart_time_buttons[i].onclick = ()=>{
+        cargarGrafico();
+    }
+}
+for(let i = 0; i < chart_fiat_buttons.length; i++){
+    chart_fiat_buttons[i].onclick  = ()=>{
+        cargarGrafico();
+    }
+}
+for(let i = 0; i < chart_type_buttons.length; i++){
+    chart_type_buttons[i].onclick  = ()=>{
+        cargarGrafico();
+    }
+}
