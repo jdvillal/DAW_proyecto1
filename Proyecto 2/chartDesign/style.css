@@ -1,0 +1,47 @@
+
+
+/*Estilo de la tabla*/
+table{
+  border:none;
+  border-spacing: 10px 0;
+  padding: 8px;
+  
+}
+th{
+  border: none;
+  padding:10px 0;
+  background-color: #ac9d49;
+  color: white;
+  text-align: left;
+}
+td{
+  display: table-cell;
+  padding:1rem 0 1rem 0;
+  border:none;
+  text-align: left;
+  vertical-align: inherit;
+}
+tbody:nth-child(even) {
+  background-color: #ececec;
+}
+tr:hover {
+  background-color: coral;
+}
+
+#tabla-div{
+  justify-content: center;
+  max-width: 100%;
+  margin:1rem;
+}
+#tabla{
+  width: 98%;
+  border-collapse: collapse;
+}
+
+
+
+
+
+
+
+
