@@ -20,12 +20,17 @@ let cargarOpciones = ()=>{
 }
 
 
+
+
 let cargarGrafico = ()=> {
+    
+
+
     let coin_id = document.getElementById('coin-select').value;
     console.log(coin_id);
     var t_f = Math.round((new Date()).getTime() / 1000);
     let t_0 = t_f - 86400;
-    //console.log(ts);
+
     if(coin_id == -1){
         return;
     }
@@ -51,6 +56,13 @@ let cargarGrafico = ()=> {
 
         oldChart.parentNode.replaceChild(newChart, oldChart);
 
+        let charts = document.getElementsByClassName("chartjs-size-monitor");
+        for(let i = 0; i < charts.length; i++){
+            if(i !=0){
+                document.getElementById('chart-div').removeChild(charts[i]);
+            }
+        }
+
         new Chart("myChart", {
         type: "line",
         data: {
@@ -71,4 +83,5 @@ let cargarGrafico = ()=> {
 cargarOpciones();
 document.getElementById('coin-select').addEventListener('change', (event)=>{
     cargarGrafico();
+    //getSelectedTime();
 });
