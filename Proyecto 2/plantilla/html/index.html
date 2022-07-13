@@ -483,12 +483,10 @@
               <div class="navbar-nav align-items-center">
                 <div class="nav-item d-flex align-items-center">
                   <i class="bx bx-search fs-4 lh-0"></i>
-                  <input
-                    type="text"
-                    class="form-control border-0 shadow-none"
-                    placeholder="Search..."
-                    aria-label="Search..."
-                  />
+                  
+                  <select id="coin-select" class="custom-select custom-select-lg form-control border-0 shadow-none" required="">
+                    <option value="-1" selected="">Seleccione una Cryptomoneda</option>
+                  </select>
                 </div>
               </div>
               <!-- /Search -->
@@ -682,56 +680,55 @@
                 <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
                   <div class="card">
                     <div class="row row-bordered g-0">
-                      <div class="col-md-8">
-                        <h5 class="card-header m-0 me-2 pb-3">Total Revenue</h5>
-                        <div id="totalRevenueChart" class="px-2"></div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="card-body">
-                          <div class="text-center">
-                            <div class="dropdown">
-                              <button
-                                class="btn btn-sm btn-outline-primary dropdown-toggle"
-                                type="button"
-                                id="growthReportId"
-                                data-bs-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                              >
-                                2022
-                              </button>
-                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="growthReportId">
-                                <a class="dropdown-item" href="javascript:void(0);">2021</a>
-                                <a class="dropdown-item" href="javascript:void(0);">2020</a>
-                                <a class="dropdown-item" href="javascript:void(0);">2019</a>
-                              </div>
+                      <div class="col-md">
+                        <h5 class="card-header m-0 me-2 pb-3">COIN</h5>
+                        <div id="gen-chart-div container">
+                          <div id="chart-select-div" class="row">
+                    
+                            <div id="chart-time-selector" class="btn-group col" role="group" aria-label="Basic radio toggle button group">
+                              <input type="radio" class="btn-check" name="chart-time-selector-radiobutton" id="day-radiobutton" autocomplete="off" checked>
+                              <label class="btn btn-outline-primary" for="day-radiobutton">1 Día</label>
+                            
+                              <input type="radio" class="btn-check" name="chart-time-selector-radiobutton" id="week-radiobutton" autocomplete="off">
+                              <label class="btn btn-outline-primary" for="week-radiobutton">1 Semana</label>
+                            
+                              <input type="radio" class="btn-check" name="chart-time-selector-radiobutton" id="month-radiobutton" autocomplete="off">
+                              <label class="btn btn-outline-primary" for="month-radiobutton">1 Mes</label>
+                    
+                              <input type="radio" class="btn-check" name="chart-time-selector-radiobutton" id="3months-radiobutton" autocomplete="off">
+                              <label class="btn btn-outline-primary" for="3months-radiobutton">3 Meses</label>
+                            
+                              <input type="radio" class="btn-check" name="chart-time-selector-radiobutton" id="year-radiobutton" autocomplete="off">
+                              <label class="btn btn-outline-primary" for="year-radiobutton">1 Año</label>
                             </div>
+                    
+                            <div id="chart-fiat-selector" class="btn-group col" role="group" aria-label="Basic radio toggle button group">
+                              <input type="radio" class="btn-check" name="chart-fiat-selector-radiobutton" id="dollar-radiobutton" autocomplete="off" checked>
+                              <label class="btn btn-outline-primary" for="dollar-radiobutton">Dolar (USD)</label>
+                            
+                              <input type="radio" class="btn-check" name="chart-fiat-selector-radiobutton" id="euro-radiobutton" autocomplete="off">
+                              <label class="btn btn-outline-primary" for="euro-radiobutton">Euro (EUR)</label>
+                        
+                            </div>
+                            
                           </div>
-                        </div>
-                        <div id="growthChart"></div>
-                        <div class="text-center fw-semibold pt-3 mb-2">62% Company Growth</div>
-
-                        <div class="d-flex px-xxl-4 px-lg-2 p-4 gap-xxl-3 gap-lg-1 gap-3 justify-content-between">
-                          <div class="d-flex">
-                            <div class="me-2">
-                              <span class="badge bg-label-primary p-2"><i class="bx bx-dollar text-primary"></i></span>
-                            </div>
-                            <div class="d-flex flex-column">
-                              <small>2022</small>
-                              <h6 class="mb-0">$32.5k</h6>
-                            </div>
+                          
+                          <div id="chart-div" class="row" style="min-height: 40%;">
+                            <canvas id="myChart" style="width:100%"></canvas>
                           </div>
-                          <div class="d-flex">
-                            <div class="me-2">
-                              <span class="badge bg-label-info p-2"><i class="bx bx-wallet text-info"></i></span>
-                            </div>
-                            <div class="d-flex flex-column">
-                              <small>2021</small>
-                              <h6 class="mb-0">$41.2k</h6>
-                            </div>
+                          <div class="row">
+                            <div id="chart-type-selector" class="btn-group col" role="group" aria-label="Basic radio toggle button group">
+                              <input type="radio" class="btn-check" name="chart-type-selector-radiobutton" id="price-radiobutton" autocomplete="off" checked>
+                              <label class="btn btn-outline-primary" for="price-radiobutton">Precio</label>
+                            
+                              <input type="radio" class="btn-check" name="chart-type-selector-radiobutton" id="marketcap-radiobutton" autocomplete="off">
+                              <label class="btn btn-outline-primary" for="marketcap-radiobutton">Capitalización de Mercado</label>
+                        
+                            </div> 
                           </div>
                         </div>
                       </div>
+                      
                     </div>
                   </div>
                 </div>
@@ -1183,6 +1180,8 @@
 
     <!-- Page JS -->
     <script src="../assets/js/dashboards-analytics.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="../js/script.js"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
