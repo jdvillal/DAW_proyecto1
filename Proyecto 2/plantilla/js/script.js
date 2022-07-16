@@ -11,10 +11,7 @@ let cargarOpciones = ()=>{
             }
             document.getElementById('coin-select').innerHTML += plantilla;
         }
-
-    
-
-        })
+    })
     .catch(error => {
         // handle the error
         console.log(error);
@@ -131,21 +128,54 @@ let cargarGrafico = ()=> {
 cargarOpciones();
 setTimeout(function(){
     cargarGrafico();//TO DO: REFACTOR ASYNC
+    cargar_datos();
 }, 500);
+
 document.getElementById('coin-select').addEventListener('change', (event)=>{
     cargarGrafico();
+    cargar_datos();
     //getSelectedTime();
 });
 
+let cargar_datos = () =>{
+    let coin_id = document.getElementById('coin-select').value;
+    let url = `https://api.coingecko.com/api/v3/coins/${coin_id}`;
+    fetch(url)
+    .then(response => response.json())
+    .then(data=>{
+        console.log(data);
 
+
+        let description = data.description.en;
+        document.getElementById('coin-description-div').innerHTML += description;
+        console.log(description);
+
+        /*Recuperar moneda seleccionada (dolar o euro)*/
+        let fiatOptions = document.getElementsByName('chart-fiat-selector-radiobutton');
+        let fiat;
+        for(i = 0; i < fiatOptions.length; i++){
+            if(fiatOptions[i].checked){
+                if(fiatOptions[i].getAttribute('id') == "dollar-radiobutton"){
+                    fiat = "usd";
+                }else if(fiatOptions[i].getAttribute('id') == "euro-radiobutton"){
+                    fiat = "eur";
+                }
+                break;
+            }
+        }
+
+        console.log(fiat);
+
+    })
+    .catch(error => {
+        // handle the error
+        console.log(error);
+    });
+}
 
 let chart_time_buttons = document.getElementsByName('chart-time-selector-radiobutton');
 let chart_fiat_buttons = document.getElementsByName('chart-fiat-selector-radiobutton');
 let chart_type_buttons = document.getElementsByName('chart-type-selector-radiobutton');
-
-console.log(chart_time_buttons);
-console.log(chart_fiat_buttons);
-console.log(chart_type_buttons);
 
 for(let i = 0; i < chart_time_buttons.length; i++){
     chart_time_buttons[i].onclick = ()=>{
@@ -155,6 +185,7 @@ for(let i = 0; i < chart_time_buttons.length; i++){
 for(let i = 0; i < chart_fiat_buttons.length; i++){
     chart_fiat_buttons[i].onclick  = ()=>{
         cargarGrafico();
+        cargar_datos();
     }
 }
 for(let i = 0; i < chart_type_buttons.length; i++){
