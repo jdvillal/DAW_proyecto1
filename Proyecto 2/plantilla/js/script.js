@@ -10,7 +10,7 @@ let cargarOpciones = ()=>{
                 plantilla = `<option selected="selected" value="${data[i].id}">${data[i].name}</option>`;
             }
             document.getElementById('coin-select').innerHTML += plantilla;
-        }
+        } 
     })
     .catch(error => {
         // handle the error
@@ -145,10 +145,9 @@ let cargar_datos = () =>{
     .then(data=>{
         console.log(data);
 
-
         let description = data.description.en;
-        document.getElementById('coin-description-div').innerHTML += description;
-        console.log(description);
+        document.getElementById('coin-description-div').innerHTML = description;
+        //console.log(description);
 
         /*Recuperar moneda seleccionada (dolar o euro)*/
         let fiatOptions = document.getElementsByName('chart-fiat-selector-radiobutton');
@@ -163,8 +162,41 @@ let cargar_datos = () =>{
                 break;
             }
         }
+        let precio;
+        let marketcap;
+        let coin_ath;
+        let alto_24h;
+        let bajo_24h;
 
-        console.log(fiat);
+        if(fiat == "eur"){
+            precio = data.market_data.current_price.eur;
+            market_cap = data.market_data.market_cap.eur;
+            coin_ath = data.market_data.ath.eur;
+            alto_24h = data.market_data.high_24h.eur;
+            bajo_24h = data.market_data.low_24h.eur;
+        }else{
+            precio = data.market_data.current_price.usd;
+            marketcap = data.market_data.market_cap.usd;
+            coin_ath = data.market_data.ath.usd;
+            alto_24h = data.market_data.high_24h.usd;
+            bajo_24h = data.market_data.low_24h.usd;
+        }
+        let precio_change_24h = data.market_data.price_change_percentage_24h;
+        let market_cap_change_24h = data.market_data.market_cap_change_percentage_24h;
+        let rank = data.market_cap_rank;
+
+        let pop_twitter = data.community_data.twitter_followers;
+        let reddit_posts = data.community_data.reddit_average_posts_48h;
+        let genesis_date = data.genesis_date;
+        let coin_img_src = data.image.small;
+
+        document.getElementById('current-price-tag').innerText = precio;
+        document.getElementById('current-mcap-tag').innerText = marketcap;
+        document.getElementById('rank-tag').innerText = "#"+rank;
+        document.getElementById('twitter-followers-tag').innerText = pop_twitter;
+        document.getElementById('reddit_data_tag').innerText = reddit_posts;
+        document.getElementById('genesis-date-tag').innerText = genesis_date;
+        document.getElementById('coin-img').setAttribute('src',coin_img_src);
 
     })
     .catch(error => {
