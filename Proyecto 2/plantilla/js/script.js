@@ -125,17 +125,6 @@ let cargarGrafico = ()=> {
 
 }
 
-cargarOpciones();
-setTimeout(function(){
-    cargarGrafico();//TO DO: REFACTOR ASYNC
-    cargar_datos();
-}, 500);
-
-document.getElementById('coin-select').addEventListener('change', (event)=>{
-    cargarGrafico();
-    cargar_datos();
-    //getSelectedTime();
-});
 
 let cargar_datos = () =>{
     let coin_id = document.getElementById('coin-select').value;
@@ -162,19 +151,23 @@ let cargar_datos = () =>{
                 break;
             }
         }
+        let simbolo;
         let precio;
         let marketcap;
         let coin_ath;
         let alto_24h;
         let bajo_24h;
+        
 
         if(fiat == "eur"){
-            precio = data.market_data.current_price.eur;
+            simbolo = "€"
+            precio =  data.market_data.current_price.eur;
             marketcap = data.market_data.market_cap.eur;
             coin_ath = data.market_data.ath.eur;
             alto_24h = data.market_data.high_24h.eur;
             bajo_24h = data.market_data.low_24h.eur;
         }else{
+            simbolo = "$";
             precio = data.market_data.current_price.usd;
             marketcap = data.market_data.market_cap.usd;
             coin_ath = data.market_data.ath.usd;
@@ -190,13 +183,20 @@ let cargar_datos = () =>{
         let genesis_date = data.genesis_date;
         let coin_img_src = data.image.small;
 
-        document.getElementById('current-price-tag').innerText = precio;
-        document.getElementById('current-mcap-tag').innerText = marketcap;
+        document.getElementById('coin-name-h5').innerText = data.name;
+        document.getElementById('coin-name-span').innerText = data.name;
+        document.getElementById('current-price-tag').innerText = simbolo+precio;
+        document.getElementById('current-mcap-tag').innerText = simbolo+(Math.round(marketcap/1000000))+"M";
         document.getElementById('rank-tag').innerText = "#"+rank;
         document.getElementById('twitter-followers-tag').innerText = pop_twitter;
         document.getElementById('reddit_data_tag').innerText = reddit_posts;
         document.getElementById('genesis-date-tag').innerText = genesis_date;
         document.getElementById('coin-img').setAttribute('src',coin_img_src);
+        document.getElementById('min-24h-tag').innerText = "Min:" + simbolo + bajo_24h;
+        document.getElementById('max-24h-tag').innerText = "Max:" + simbolo + alto_24h;
+        let percentage = "width: " + Math.round(((alto_24h - bajo_24h)/precio)*100) + "%";
+        document.getElementById('price-bar').setAttribute('style',percentage);
+        console.log(percentage);
         if(precio_change_24h < 0){
             precio_change_24h = -precio_change_24h;
             document.getElementById('price-percent-tag').setAttribute('class', 'text-danger fw-semibold');
@@ -206,7 +206,6 @@ let cargar_datos = () =>{
             document.getElementById('price-percent-tag').innerHTML = `<i class="bx bx-up-arrow-alt"></i>` + precio_change_24h+"%";
         }
         
-
         if(market_cap_change_24h < 0){
             market_cap_change_24h = -market_cap_change_24h;
             document.getElementById('mcap-percent-tag').setAttribute('class', 'text-danger fw-semibold');
@@ -215,6 +214,7 @@ let cargar_datos = () =>{
             document.getElementById('mcap-percent-tag').setAttribute('class', 'text-success fw-semibold');
             document.getElementById('mcap-percent-tag').innerHTML = `<i class="bx bx-up-arrow-alt"></i>` + market_cap_change_24h+"%";
         }
+
         
 
     })
@@ -223,6 +223,86 @@ let cargar_datos = () =>{
         console.log(error);
     });
 }
+
+let cargar_tendencias = async () => {
+    /*Recuperar moneda seleccionada (dolar o euro)*/
+    let fiatOptions = document.getElementsByName('chart-fiat-selector-radiobutton');
+    var fiat;
+    var symbolo;
+    for(i = 0; i < fiatOptions.length; i++){
+        if(fiatOptions[i].checked){
+            if(fiatOptions[i].getAttribute('id') == "dollar-radiobutton"){
+                fiat = "usd";
+                symbolo = "USD"
+            }else if(fiatOptions[i].getAttribute('id') == "euro-radiobutton"){
+                fiat = "eur";
+                symbolo = "EUR"
+            }
+            break;
+        }
+    }
+    var btc_price;
+    await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=${fiat}`)
+    .then(response => response.json())
+    .then(data=>{
+        if(fiat == "usd"){
+            btc_price = data.bitcoin.usd;
+        }else{
+            btc_price = data.bitcoin.eur;
+        }
+        //console.log(btc_price);
+    })
+    .catch(error => {
+        // handle the error
+        console.log(error);
+    });
+    let url = "https://api.coingecko.com/api/v3/search/trending";
+    await fetch(url)
+    .then(response => response.json())
+    .then(data=>{
+        document.getElementById('trending-list').innerHTML = "";
+        for(let i = 0; i < 6; i++){
+            console.log(data.coins[i].item.price_btc, btc_price);
+            let price_fiat = (data.coins[i].item.price_btc)*(btc_price);
+            let plantilla = `
+                <li class="d-flex mb-4 pb-1">
+                <div class="avatar flex-shrink-0 me-3">
+                <img src="${data.coins[i].item.small}" alt="User" class="rounded" />
+                </div>
+                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                <div class="me-2">
+                    <small class="text-muted d-block mb-1">#${i+1}</small>
+                    <h6 class="mb-0">${data.coins[i].item.name}</h6>
+                </div>
+                <div class="user-progress d-flex align-items-center gap-1">
+                    <h6 class="mb-0">${Math.round(price_fiat*10000000)/10000000}</h6>
+                    <span class="text-muted">${symbolo}</span>
+                </div>
+                </div>
+            </li>
+                `;
+            document.getElementById('trending-list').innerHTML += plantilla;
+        }
+    })
+    .catch(error => {
+        // handle the error
+        console.log(error);
+    });
+}
+
+
+cargarOpciones();
+setTimeout(function(){
+    cargarGrafico();//TO DO: REFACTOR ASYNC
+    cargar_datos();
+    cargar_tendencias();
+}, 500);
+
+document.getElementById('coin-select').addEventListener('change', (event)=>{
+    cargarGrafico();
+    cargar_datos();
+    //getSelectedTime();
+});
 
 let chart_time_buttons = document.getElementsByName('chart-time-selector-radiobutton');
 let chart_fiat_buttons = document.getElementsByName('chart-fiat-selector-radiobutton');
@@ -237,6 +317,7 @@ for(let i = 0; i < chart_fiat_buttons.length; i++){
     chart_fiat_buttons[i].onclick  = ()=>{
         cargarGrafico();
         cargar_datos();
+        cargar_tendencias();
     }
 }
 for(let i = 0; i < chart_type_buttons.length; i++){
