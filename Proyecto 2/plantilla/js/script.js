@@ -146,7 +146,7 @@ let cargar_datos = () =>{
         console.log(data);
 
         let description = data.description.en;
-        document.getElementById('coin-description-div').innerHTML = description;
+        document.getElementById('coin-description-span').innerHTML = description;
         //console.log(description);
 
         /*Recuperar moneda seleccionada (dolar o euro)*/
@@ -170,7 +170,7 @@ let cargar_datos = () =>{
 
         if(fiat == "eur"){
             precio = data.market_data.current_price.eur;
-            market_cap = data.market_data.market_cap.eur;
+            marketcap = data.market_data.market_cap.eur;
             coin_ath = data.market_data.ath.eur;
             alto_24h = data.market_data.high_24h.eur;
             bajo_24h = data.market_data.low_24h.eur;
@@ -197,6 +197,25 @@ let cargar_datos = () =>{
         document.getElementById('reddit_data_tag').innerText = reddit_posts;
         document.getElementById('genesis-date-tag').innerText = genesis_date;
         document.getElementById('coin-img').setAttribute('src',coin_img_src);
+        if(precio_change_24h < 0){
+            precio_change_24h = -precio_change_24h;
+            document.getElementById('price-percent-tag').setAttribute('class', 'text-danger fw-semibold');
+            document.getElementById('price-percent-tag').innerHTML = `<i class="bx bx-down-arrow-alt"></i>` + precio_change_24h+"%";
+        }else{
+            document.getElementById('price-percent-tag').setAttribute('class', 'text-success fw-semibold');
+            document.getElementById('price-percent-tag').innerHTML = `<i class="bx bx-up-arrow-alt"></i>` + precio_change_24h+"%";
+        }
+        
+
+        if(market_cap_change_24h < 0){
+            market_cap_change_24h = -market_cap_change_24h;
+            document.getElementById('mcap-percent-tag').setAttribute('class', 'text-danger fw-semibold');
+            document.getElementById('mcap-percent-tag').innerHTML = `<i class="bx bx-down-arrow-alt"></i>` + market_cap_change_24h+"%";
+        }else{
+            document.getElementById('mcap-percent-tag').setAttribute('class', 'text-success fw-semibold');
+            document.getElementById('mcap-percent-tag').innerHTML = `<i class="bx bx-up-arrow-alt"></i>` + market_cap_change_24h+"%";
+        }
+        
 
     })
     .catch(error => {

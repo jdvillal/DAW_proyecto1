@@ -341,16 +341,16 @@
             <div class="container-xxl flex-grow-1 container-p-y">
               <div class="row mb-4">
                 
-                <!-- first row -->
-                <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
+                <!-- grafico-->
+                <div class="col-md-12  col-lg-7 order-2 order-md-3 order-lg-2 mb-4">
                   <div class="card">
                     <div class="row row-bordered g-0">
                       <div class="col-md">
-                        <h5 class="card-header m-0 me-2 pb-3">COIN</h5>
+                        <h5 id="coin-name-h5" class="card-header m-0 me-2 pb-3">COIN</h5>
                         <div id="gen-chart-div container" class="">
                           <div id="chart-select-div" class="row mb-2 ">
                     
-                            <div id="chart-time-selector" class="btn-group col" role="group" aria-label="Basic radio toggle button group">
+                            <div id="chart-time-selector" class="btn-group col pb-2" role="group" aria-label="Basic radio toggle button group">
                               <input type="radio" class="btn-check" name="chart-time-selector-radiobutton" id="day-radiobutton" autocomplete="off" checked>
                               <label class="btn btn-outline-primary" for="day-radiobutton">1 Día</label>
                             
@@ -367,7 +367,7 @@
                               <label class="btn btn-outline-primary" for="year-radiobutton">1 Año</label>
                             </div>
                     
-                            <div id="chart-fiat-selector" class="btn-group col" role="group" aria-label="Basic radio toggle button group">
+                            <div id="chart-fiat-selector" class="btn-group col pb-2" role="group" aria-label="Basic radio toggle button group">
                               <input type="radio" class="btn-check" name="chart-fiat-selector-radiobutton" id="dollar-radiobutton" autocomplete="off" checked>
                               <label class="btn btn-outline-primary" for="dollar-radiobutton">Dolar (USD)</label>
                             
@@ -397,10 +397,10 @@
                     </div>
                   </div>
                 </div>
-                <!--/ gráfico -->
-                <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
-                  <div class="row">
-                    <div class="col-6 mb-4">
+                <!--/ info-cards -->
+                <div class="col-md-12 col-lg-5 order-3 order-md-2">
+                  <div class="row ">
+                    <div class="col-md-5 col-lg-5 mb-4">
                       <div class="card">
                         <div class="card-body">
                           <div class="card-title d-flex align-items-start justify-content-between">
@@ -416,11 +416,11 @@
                           </div>
                           <span class="d-block fw-semibold mb-1">Precio Actual</span>
                           <h3 id="current-price-tag" class="card-title text-nowrap mb-2"></h3>
-                          <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> 14.82%</small>
+                          <small id="price-percent-tag" class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> %</small>
                         </div>
                       </div>
                     </div>
-                    <div class="col-6 mb-4">
+                    <div class="col-md-7 col-lg-7 mb-4">
                       <div class="card">
                         <div class="card-body">
                           <div class="card-title d-flex align-items-start justify-content-between">
@@ -436,92 +436,89 @@
                           </div>
                           <span class="fw-semibold d-block mb-1">Cap. Mercado</span>
                           <h3 id="current-mcap-tag" class="card-title mb-2"></h3>
-                          <small class="text-danger fw-semibold"><i class="bx bx-down-arrow-alt"></i> -14.82%</small>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-12 mb-4">
-                      <div class="card">
-                        <div class="card-header d-flex align-items-center justify-content-between pb-0">
-                          <div class="card-title mb-0">
-                            <h5 class="md-3 me-2">Otros datos</h5>
-                            
-                          </div>
-                          
-                        </div>
-                        <div class="card-body">
-    
-                          <ul class="p-0 m-0">
-                            <li class="d-flex mb-4 pb-1">
-                              <div class="avatar flex-shrink-0 me-3">
-                                <div class="flex-shrink-0 me-3">
-                                    <img src="../assets/img/icons/proyecto/ranking.png" alt class="w-px-30 h-auto rounded" />
-                                </div>
-                              </div>
-                              <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                <div class="me-2">
-                                  <h6 class="mb-0">Ranking</h6>
-                                  <small class="text-muted">Por cap. de mercado</small>
-                                </div>
-                                <div class="user-progress">
-                                  <small id="rank-tag" class="fw-semibold">#</small>
-                                </div>
-                              </div>
-                            </li>
-                            <li class="d-flex mb-4 pb-1">
-                              <div class="flex-shrink-0 me-3">
-                                  <img src="../assets/img/icons/proyecto/twitter.png" alt class="w-px-30 h-auto rounded" />
-                              </div>
-                              <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                <div class="me-2">
-                                  <h6 class="mb-0">Popularidad Twitter</h6>
-                                  <small class="text-muted">Número de seguidores</small>
-                                </div>
-                                <div class="user-progress">
-                                  <small id="twitter-followers-tag" class="fw-semibold"></small>
-                                </div>
-                              </div>
-                            </li>
-                            <li class="d-flex mb-4 pb-1">
-                              <div class="avatar flex-shrink-0 me-3">
-                                  <img src="../assets/img/icons/proyecto/reddit.png" alt class="w-px-30 h-auto rounded" />
-                              </div>
-                              <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                <div class="me-2">
-                                  <h6 class="mb-0">Popularidad reddit</h6>
-                                  <small class="text-muted">Posts (ult 24h)</small>
-                                </div>
-                                <div class="user-progress">
-                                  <small id="reddit_data_tag" class="fw-semibold"></small>
-                                </div>
-                              </div>
-                            </li>
-                            <li class="d-flex">
-                              <div class="avatar flex-shrink-0 me-3">
-                                  <img src="../assets/img/icons/proyecto/genesis.png" alt class="w-px-30 h-auto rounded" />
-                              </div>
-                              <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                <div class="me-2">
-                                  <h6 class="mb-0">Fecha de origen</h6>
-                                  <small class="text-muted">Bloque genesis</small>
-                                </div>
-                                <div class="user-progress">
-                                  <small id="genesis-date-tag" class="fw-semibold"></small>
-                                </div>
-                              </div>
-                            </li>
-                          </ul>
+                          <small id="mcap-percent-tag" class="text-danger fw-semibold"><i class="bx bx-down-arrow-alt"></i> %</small>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <!-- Order Statistics -->
-
-                <!--/ Order Statistics -->
+                  <div class="col-md-12 col-lg-12 mb-4">
+                    <div class="card">
+                      <div class="card-header d-flex align-items-center justify-content-between pb-0">
+                        <div class="card-title mb-0">
+                          <h5 class="md-3 me-2">Otros datos</h5>
+                          
+                        </div>
+                        
+                      </div>
+                      <div class="card-body">
+  
+                        <ul class="p-0 m-0">
+                          <li class="d-flex mb-4 pb-1">
+                            <div class="avatar flex-shrink-0 me-3">
+                              <div class="flex-shrink-0 me-3">
+                                  <img src="../assets/img/icons/proyecto/ranking.png" alt class="w-px-30 h-auto rounded" />
+                              </div>
+                            </div>
+                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                              <div class="me-2">
+                                <h6 class="mb-0">Ranking</h6>
+                                <small class="text-muted">Por cap. de mercado</small>
+                              </div>
+                              <div class="user-progress">
+                                <small id="rank-tag" class="fw-semibold">#</small>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="d-flex mb-4 pb-1">
+                            <div class="flex-shrink-0 me-3">
+                                <img src="../assets/img/icons/proyecto/twitter.png" alt class="w-px-30 h-auto rounded" />
+                            </div>
+                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                              <div class="me-2">
+                                <h6 class="mb-0">Popularidad Twitter</h6>
+                                <small class="text-muted">Número de seguidores</small>
+                              </div>
+                              <div class="user-progress">
+                                <small id="twitter-followers-tag" class="fw-semibold"></small>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="d-flex mb-4 pb-1">
+                            <div class="avatar flex-shrink-0 me-3">
+                                <img src="../assets/img/icons/proyecto/reddit.png" alt class="w-px-30 h-auto rounded" />
+                            </div>
+                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                              <div class="me-2">
+                                <h6 class="mb-0">Popularidad reddit</h6>
+                                <small class="text-muted">Posts (ult 24h)</small>
+                              </div>
+                              <div class="user-progress">
+                                <small id="reddit_data_tag" class="fw-semibold"></small>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="d-flex">
+                            <div class="avatar flex-shrink-0 me-3">
+                                <img src="../assets/img/icons/proyecto/genesis.png" alt class="w-px-30 h-auto rounded" />
+                            </div>
+                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                              <div class="me-2">
+                                <h6 class="mb-0">Fecha de origen</h6>
+                                <small class="text-muted">Bloque genesis</small>
+                              </div>
+                              <div class="user-progress">
+                                <small id="genesis-date-tag" class="fw-semibold"></small>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="row mb-4">
-                <div class="col-8 mb-4">
+                <div class="col-md-12 col-lg-8 mb-4">
                   <div class="card">
                     <div class="card-body">
                       <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
@@ -529,18 +526,17 @@
                           <div class="card-title">
                             <h5 class="text-nowrap mb-2">Descripción</h5>
                             <span id="year-tag-span" class="badge bg-label-warning rounded-pill">Año</span>
-                          </div>
-                          <div id="coin-description-div" class="mt-sm-auto">
                             <span id="coin-description-span" class="d-block"></span>
                           </div>
+
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <!-- Transactions -->
-                <div class="col-md-6 col-lg-4 order-2 mb-4">
+                <!-- Lista mas buscadas -->
+                <div class="col-md-12 col-lg-4 order-2 mb-4">
                   <div class="card h-100">
                     <div class="card-header d-flex align-items-center justify-content-between">
                       <h5 class="card-title m-0 me-2">Más buscadas (ult 24h)</h5>
@@ -553,7 +549,7 @@
                           </div>
                           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
-                              <small class="text-muted d-block mb-1">Paypal</small>
+                              <small class="text-muted d-block mb-1">#1</small>
                               <h6 class="mb-0">Send money</h6>
                             </div>
                             <div class="user-progress d-flex align-items-center gap-1">
@@ -568,7 +564,7 @@
                           </div>
                           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
-                              <small class="text-muted d-block mb-1">Wallet</small>
+                              <small class="text-muted d-block mb-1">#2</small>
                               <h6 class="mb-0">Mac'D</h6>
                             </div>
                             <div class="user-progress d-flex align-items-center gap-1">
@@ -583,7 +579,7 @@
                           </div>
                           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
-                              <small class="text-muted d-block mb-1">Transfer</small>
+                              <small class="text-muted d-block mb-1">#3</small>
                               <h6 class="mb-0">Refund</h6>
                             </div>
                             <div class="user-progress d-flex align-items-center gap-1">
@@ -598,7 +594,7 @@
                           </div>
                           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
-                              <small class="text-muted d-block mb-1">Credit Card</small>
+                              <small class="text-muted d-block mb-1">#4</small>
                               <h6 class="mb-0">Ordered Food</h6>
                             </div>
                             <div class="user-progress d-flex align-items-center gap-1">
@@ -613,7 +609,7 @@
                           </div>
                           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
-                              <small class="text-muted d-block mb-1">Wallet</small>
+                              <small class="text-muted d-block mb-1">#5</small>
                               <h6 class="mb-0">Starbucks</h6>
                             </div>
                             <div class="user-progress d-flex align-items-center gap-1">
@@ -628,7 +624,7 @@
                           </div>
                           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
-                              <small class="text-muted d-block mb-1">Mastercard</small>
+                              <small class="text-muted d-block mb-1">#6</small>
                               <h6 class="mb-0">Ordered Food</h6>
                             </div>
                             <div class="user-progress d-flex align-items-center gap-1">
@@ -654,8 +650,8 @@
                   <script>
                     document.write(new Date().getFullYear());
                   </script>
-                  , made with ❤️ by
-                  <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
+                  , Proyecto2 por
+                  <a href="https://github.com/jdvillal" target="_blank" class="footer-link fw-bolder">Jorge Villalta</a>
                 </div>
                 <div>
                   <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
