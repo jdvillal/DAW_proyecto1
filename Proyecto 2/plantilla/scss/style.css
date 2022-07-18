@@ -10,6 +10,12 @@ option{
     font-size: medium;
 }
 
+@media (max-width: 480px) {
+    #star-tag{
+        display: none;
+    }
+}
+
 
 
 

@@ -112,22 +112,6 @@ let cargarGrafico = ()=> {
             }
         }
 
-        for(let timestamp of xValues){
-
-            const date = new Date(timestamp * 1000);
-
-            const hours = date.getHours();
-            const minutes = date.getMinutes();
-            const seconds = date.getSeconds();
-
-            // 👇️ Format as hh:mm:ss
-            const time = `${padTo2Digits(hours)}:${padTo2Digits(minutes)}:${padTo2Digits(
-            seconds,
-            )}`;
-
-            console.log(date);
-        }
-
         new Chart("myChart", {
         type: "line",
         data: {
@@ -164,7 +148,6 @@ let cargar_datos = () =>{
     fetch(url)
     .then(response => response.json())
     .then(data=>{
-        console.log(data);
 
         let description = data.description.en;
         document.getElementById('coin-description-span').innerHTML = description;
@@ -226,9 +209,8 @@ let cargar_datos = () =>{
         document.getElementById('coin-img').setAttribute('src',coin_img_src);
         document.getElementById('min-24h-tag').innerText = "Min:" + simbolo + bajo_24h;
         document.getElementById('max-24h-tag').innerText = "Max:" + simbolo + alto_24h;
-        let percentage = "width: " + Math.round(((alto_24h - bajo_24h)/precio)*100) + "%";
+        let percentage = "width: " + Math.round(((precio - bajo_24h)/(alto_24h-bajo_24h))*100) + "%";
         document.getElementById('price-bar').setAttribute('style',percentage);
-        console.log(percentage);
         if(precio_change_24h < 0){
             precio_change_24h = -precio_change_24h;
             document.getElementById('price-percent-tag').setAttribute('class', 'text-danger fw-semibold');
@@ -294,7 +276,6 @@ let cargar_tendencias = async () => {
     .then(data=>{
         document.getElementById('trending-list').innerHTML = "";
         for(let i = 0; i < 6; i++){
-            console.log(data.coins[i].item.price_btc, btc_price);
             let price_fiat = (data.coins[i].item.price_btc)*(btc_price);
             let plantilla = `
                 <li class="d-flex mb-4 pb-1">
