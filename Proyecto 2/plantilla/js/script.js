@@ -1,7 +1,7 @@
 
-let cargarOpciones = ()=>{
+let cargarOpciones = async ()=>{
     let url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false';
-    fetch(url)
+    await fetch(url)
     .then(response => response.json())
     .then(data=>{
         for(let i = 0; i < data.length; i++){
@@ -19,6 +19,10 @@ let cargarOpciones = ()=>{
 
 }
 
+function padTo2Digits(num) {
+    return num.toString().padStart(2, '0');
+  }
+
 
 let cargarGrafico = ()=> {
     var t_f = Math.round((new Date()).getTime() / 1000);
@@ -33,9 +37,9 @@ let cargarGrafico = ()=> {
                 t_0 -= (60*60*24*7);
             }else if(timeOptions[i].getAttribute('id') == "month-radiobutton"){
                 t_0 -= (60*60*24*30);
-            }else if(timeOptions[i].getAttribute('id') == "3months-radiobutton"){
+            }/*else if(timeOptions[i].getAttribute('id') == "3months-radiobutton"){
                 t_0 -= (60*60*24*90);
-            }else if(timeOptions[i].getAttribute('id') == "year-radiobutton"){
+            }*/else if(timeOptions[i].getAttribute('id') == "year-radiobutton"){
                 t_0 -= (60*60*24*365);
             }
             break;
@@ -108,6 +112,22 @@ let cargarGrafico = ()=> {
             }
         }
 
+        for(let timestamp of xValues){
+
+            const date = new Date(timestamp * 1000);
+
+            const hours = date.getHours();
+            const minutes = date.getMinutes();
+            const seconds = date.getSeconds();
+
+            // 👇️ Format as hh:mm:ss
+            const time = `${padTo2Digits(hours)}:${padTo2Digits(minutes)}:${padTo2Digits(
+            seconds,
+            )}`;
+
+            console.log(date);
+        }
+
         new Chart("myChart", {
         type: "line",
         data: {
@@ -118,7 +138,19 @@ let cargarGrafico = ()=> {
             data: yValues
             }]
         },
-        options:{}
+        options: {
+            legend: {display: false},
+            scales: {
+                xAxes: [{
+                 ticks: {
+                        display: false
+                 },
+                gridLines : {
+                    display : false
+                }
+               }]
+             }
+        }
         });
     });
     
@@ -291,12 +323,15 @@ let cargar_tendencias = async () => {
 }
 
 
-cargarOpciones();
-setTimeout(function(){
-    cargarGrafico();//TO DO: REFACTOR ASYNC
+
+
+async function cargar_todo() {
+    await cargarOpciones();
+    cargarGrafico();
     cargar_datos();
     cargar_tendencias();
-}, 500);
+}
+cargar_todo();
 
 document.getElementById('coin-select').addEventListener('change', (event)=>{
     cargarGrafico();

@@ -27,9 +27,13 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Dashboard - Analytics | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>Proyecto2-Coinscan</title>
 
     <meta name="description" content="" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
@@ -54,6 +58,7 @@
     <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 
     <link rel="stylesheet" href="../assets/vendor/libs/apex-charts/apex-charts.css" />
+    <link rel="stylesheet" href="../scss/style.css">
 
     <!-- Page CSS -->
 
@@ -248,7 +253,7 @@
                 <div class="nav-item d-flex align-items-center">
                   <i class="bx bx-search fs-4 lh-0"></i>
                   
-                  <select id="coin-select" class="custom-select custom-select-lg form-control border-0 shadow-none" required="">
+                  <select id="coin-select" class="custom-select custom-select-lg form-control" required="">
                     <option value="-1" selected="">Seleccione una Cryptomoneda</option>
                   </select>
                 </div>
@@ -260,7 +265,7 @@
                 <li class="nav-item lh-1 me-3">
                   <a
                     class="github-button"
-                    href="https://github.com/themeselection/sneat-html-admin-template-free"
+                    href="https://github.com/jdvillal"
                     data-icon="octicon-star"
                     data-size="large"
                     data-show-count="true"
@@ -273,7 +278,7 @@
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                   <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                      <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                      <img src="../assets/img/avatars/profile.jpg" alt class="w-px-40 h-auto rounded-circle" />
                     </div>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end">
@@ -282,11 +287,11 @@
                         <div class="d-flex">
                           <div class="flex-shrink-0 me-3">
                             <div class="avatar avatar-online">
-                              <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                              <img src="../assets/img/avatars/profile.jpg" alt class="w-px-40 h-auto rounded-circle" />
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">John Doe</span>
+                            <span class="fw-semibold d-block">Usuario</span>
                             <small class="text-muted">Admin</small>
                           </div>
                         </div>
@@ -359,10 +364,10 @@
                             
                               <input type="radio" class="btn-check" name="chart-time-selector-radiobutton" id="month-radiobutton" autocomplete="off">
                               <label class="btn btn-outline-primary" for="month-radiobutton">1 Mes</label>
-                    
+                            <!--
                               <input type="radio" class="btn-check" name="chart-time-selector-radiobutton" id="3months-radiobutton" autocomplete="off">
                               <label class="btn btn-outline-primary" for="3months-radiobutton">3 Meses</label>
-                            
+                            -->
                               <input type="radio" class="btn-check" name="chart-time-selector-radiobutton" id="year-radiobutton" autocomplete="off">
                               <label class="btn btn-outline-primary" for="year-radiobutton">1 Año</label>
                             </div>
@@ -382,10 +387,10 @@
                               <div id="price-bar" class="progress-bar" role="progressbar" style="width: 2%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                           </div>
-                          <div class="col-12 mx-4">
-                            <div class="row justify-content-between">
-                              <span id="min-24h-tag" class="col">min(24h):</span>
-                              <span id="max-24h-tag" class="col">max(24h):</span>
+                          <div class="col-11 mx-4">
+                            <div class="row justify-content-between mx-4">
+                              <span id="min-24h-tag" class="col pb-4">min(24h):</span>
+                              <span id="max-24h-tag" class="col pd-4">max(24h):</span>
                             </div>
                           </div>
                           
@@ -541,7 +546,6 @@
                             <span id="coin-name-span" class="badge bg-label-warning rounded-pill">coin</span>
                             <span id="coin-description-span" class="d-block"></span>
                           </div>
-
                         </div>
                       </div>
                     </div>
@@ -578,18 +582,18 @@
                   <a href="https://github.com/jdvillal" target="_blank" class="footer-link fw-bolder">Jorge Villalta</a>
                 </div>
                 <div>
-                  <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
-                  <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
+                  <a href="https://github.com/jdvillal" class="footer-link me-4" target="_blank">License</a>
+                  <a href="https://github.com/jdvillal" target="_blank" class="footer-link me-4">More Themes</a>
 
                   <a
-                    href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                    href="https://github.com/jdvillal"
                     target="_blank"
                     class="footer-link me-4"
                     >Documentation</a
                   >
 
                   <a
-                    href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
+                    href="https://github.com/jdvillal"
                     target="_blank"
                     class="footer-link me-4"
                     >Support</a
