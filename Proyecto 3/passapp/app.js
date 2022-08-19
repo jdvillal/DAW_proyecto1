@@ -6,7 +6,10 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var loginRouter = require('./routes/login');
+
+var cors = require('cors');
+const Sequelize = require('sequelize');
+const usuario = require('./models').usuario;
 
 var app = express();
 
@@ -22,7 +25,47 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/login', loginRouter);
+
+app.use(cors())
+
+app.post('/login/validate', function (req, res, next) {
+  let user = req.body.username;  
+  let pass = req.body.password;  
+    
+  console.log("usuario: ", user);
+  console.log("contraseña: ", pass);
+  //res.json({user: user, pass: pass});
+
+  usuario.findOne({ where: { username: user } }) 
+  .then(user => {  
+      if(user == null){
+        res.json({userid: null, valid: false, tipo: "unregistered"});
+      }else{
+        if(user.password == pass){
+          if(user.tipoUsuario == 1){
+            res.json({userid: user.id, valid: true, tipo: "admin"});
+          }else if(user.tipoUsuario == 2){
+            res.json({userid: user.id, valid: true, tipo: "common"});
+          }
+        }else{
+          res.json({userid: null, valid: false, tipo: null});
+        }
+      }
+  })
+  .catch(error => res.json(error)) 
+
+})
+
+app.get('/user/:u', function(req, res, next) {
+  let username = (req.params.u);
+  usuario.findAll({  
+    attributes: { exclude: ["updatedAt"] }  
+}) 
+  .then(usu =>{
+      res.json(usu);
+  });
+
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
