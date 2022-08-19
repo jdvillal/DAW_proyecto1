@@ -1,0 +1,26 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+.mat-sidenav-container {
+    position: fixed;
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
+    min-width: 100%;
+}
+.nav-link{
+  display: grid;
+  grid-template-areas: "a b";
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 100%;
+  border: 0px;
+}
+.nav-link-icon{
+  grid-area: "a";
+  margin-right: 100%;
+}
+.nav-link-span{
+  display: block;
+  grid-area: "b";
+}

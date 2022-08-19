@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { ListaCuentasComponent } from './lista-cuentas/lista-cuentas.component';
 import { LoginComponent } from './login/login.component';
-
+import { MainViewComponent } from './main-view/main-view.component';
 
 const routes: Routes = [
-  {path: "listacuentas", component: ListaCuentasComponent},
+  {path: "mainview", component: MainViewComponent},
   {path: "login", component: LoginComponent},
   { path: "**", redirectTo: "login" }
 ];

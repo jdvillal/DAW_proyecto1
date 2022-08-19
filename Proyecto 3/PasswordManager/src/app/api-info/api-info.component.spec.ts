@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListaCuentasComponent } from './lista-cuentas.component';
+import { ApiInfoComponent } from './api-info.component';
 
-describe('ListaCuentasComponent', () => {
-  let component: ListaCuentasComponent;
-  let fixture: ComponentFixture<ListaCuentasComponent>;
+describe('ApiInfoComponent', () => {
+  let component: ApiInfoComponent;
+  let fixture: ComponentFixture<ApiInfoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListaCuentasComponent ]
+      declarations: [ ApiInfoComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ListaCuentasComponent);
+    fixture = TestBed.createComponent(ApiInfoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
