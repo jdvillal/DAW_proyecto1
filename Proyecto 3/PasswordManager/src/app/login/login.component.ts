@@ -4,6 +4,7 @@ import { LoginData } from '../interfaz/login-data';
 import { Auth } from '../interfaz/auth';
 import { CookieService } from 'ngx-cookie';
 import { AppComponent } from '../app.component';
+import { SessionData } from '../interfaz/session-data';
 
 @Component({
   selector: 'app-login',
@@ -19,8 +20,9 @@ export class LoginComponent implements OnInit {
     const data: LoginData = {username: username, password: password};
     this.authService.validateUser(data).subscribe(respuesta => {
       let res = respuesta as Auth
-      //console.log(respuesta.);
+      console.log(res);
       if(res.valid){
+        this.cookieService.putObject('MyPasswordManagerAuth', {userID: res.userid.toString(), sessionHash: res.sessionHash});
         window.location.href = '/mainview';
       }else{
         let msgTag = document.getElementById('formMsg') as HTMLElement
@@ -34,10 +36,15 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const id = this.cookieService.getObject('MyPasswordManagerAuth');
-    if(id != null){
-      console.log(this.cookieService.get('MyPasswordManagerAuth'));
-      window.location.href = '/mainview';
+    const cookie = this.cookieService.getObject('MyPasswordManagerAuth') as SessionData;
+    if(cookie != null){
+      console.log('found cookies', cookie);
+      this.authService.validateSession(cookie).subscribe(respuesta => {
+        let res = respuesta as Auth;
+        if(res.valid){
+          window.location.href = '/mainview';
+        }
+      })
     }
   }
 

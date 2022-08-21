@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../app.component';
+import { CookieService } from 'ngx-cookie';
+import { AuthService } from '../servicios/auth.service';
+import { SessionData } from '../interfaz/session-data';
+import { Auth } from '../interfaz/auth';
 
 @Component({
   selector: 'app-main-view',
@@ -29,9 +33,20 @@ export class MainViewComponent implements OnInit {
     this.config = clicked;
   }
 
-  constructor() { }
+  constructor(private authService: AuthService, private cookieService:CookieService) { }
 
   ngOnInit(): void {
+    
+  }
+
+  onLogOut(){
+    const cookie = this.cookieService.getObject('MyPasswordManagerAuth') as SessionData;
+    if(cookie != null){
+      this.authService.logOut(cookie).subscribe(respuesta => {
+        this.cookieService.removeAll();
+        window.location.href = '/login';
+      })
+    }
     
   }
 
