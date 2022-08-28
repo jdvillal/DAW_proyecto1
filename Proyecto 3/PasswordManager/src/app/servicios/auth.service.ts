@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Auth } from '../interfaz/auth';
 import { LoginData } from '../interfaz/login-data';
-import { SessionData } from '../interfaz/session-data';
+import { Session } from '../interfaz/session';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -11,16 +11,19 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  validateUser(loginData: LoginData) {
-    return this.http.post('http://localhost:3000/login/validate', loginData)
+  logIn(loginData: LoginData) {
+    return this.http.post('http://localhost:3000/login',loginData, {withCredentials: true})
   }
 
-  validateSession(sessionData: SessionData){
-    return this.http.post('http://localhost:3000/session/validate', sessionData);
+  verifySession(){
+    const headers= new HttpHeaders()
+    .set('content-type', 'application/json')
+    .set('Access-Control-Allow-Origin', '*');
+    return this.http.post('http://localhost:3000/login/session', {}, {withCredentials: true});
   }
 
-  logOut(sessionData: SessionData){
-    return this.http.post('http://localhost:3000/session/logout', sessionData);
+  logOut(){
+    return this.http.post('http://localhost:3000/login/out', {}, {withCredentials: true});
   }
 
 }

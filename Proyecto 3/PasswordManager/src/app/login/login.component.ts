@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../servicios/auth.service';
 import { LoginData } from '../interfaz/login-data';
-import { Auth } from '../interfaz/auth';
-import { CookieService } from 'ngx-cookie';
+import { CookieService } from 'ngx-cookie-service';
 import { AppComponent } from '../app.component';
-import { SessionData } from '../interfaz/session-data';
+import { LoginResponse } from '../interfaz/loginResponse';
+import { SessionResponse } from '../interfaz/sessionResponse';
+import { Session } from '../interfaz/session';
 
 @Component({
   selector: 'app-login',
@@ -13,39 +14,37 @@ import { SessionData } from '../interfaz/session-data';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService, private cookieService:CookieService) {}
+  constructor(private authService: AuthService, private cookieService: CookieService) { }
 
   onclick(username: string, password: string) {
     console.log(username, password);
-    const data: LoginData = {username: username, password: password};
-    this.authService.validateUser(data).subscribe(respuesta => {
-      let res = respuesta as Auth
+    const data: LoginData = { user: username, password: password };
+    this.authService.logIn(data).subscribe(respuesta => {
+      console.log(respuesta);
+      let res = respuesta as LoginResponse
       console.log(res);
-      if(res.valid){
-        this.cookieService.putObject('MyPasswordManagerAuth', {userID: res.userid.toString(), sessionHash: res.sessionHash});
+      if (res.isValidCredentials) {
+        this.cookieService.set('userid', username);
         window.location.href = '/mainview';
-      }else{
+      } else {
+        this.cookieService.set('userid', "");
         let msgTag = document.getElementById('formMsg') as HTMLElement
-        if(res.tipo == "unregistered"){
-          msgTag.innerText = "Usuario no registrado"
-        }else if(res.tipo == null){
-          msgTag.innerText = "Contraseña incorrecta, vuelva a intentarlo"
-        }
+        msgTag.innerText = res.message;
       }
     })
   }
 
   ngOnInit(): void {
-    const cookie = this.cookieService.getObject('MyPasswordManagerAuth') as SessionData;
-    if(cookie != null){
+    const cookie = this.cookieService.get('userid');
+    if (!(cookie === "")) {
       console.log('found cookies', cookie);
-      this.authService.validateSession(cookie).subscribe(respuesta => {
-        let res = respuesta as Auth;
-        if(res.valid){
+      this.authService.verifySession().subscribe(respuesta => {
+        let res = respuesta as any;
+        console.log(respuesta);
+        if (res.isValidSession) {
           window.location.href = '/mainview';
         }
-      })
+      });
     }
   }
-
 }

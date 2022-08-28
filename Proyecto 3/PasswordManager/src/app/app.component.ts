@@ -1,4 +1,6 @@
 import { Component, Input} from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from './servicios/auth.service';
 
 
 
@@ -11,10 +13,10 @@ export class AppComponent {
   title = 'PasswordManager';
   private cookie_name='';
   private all_cookies:any='';
-  constructor() {}
+  constructor(private authService: AuthService, private cookieService: CookieService) {}
 
 
-  ngOnInit():void {
+  ngOnInit(): void {
 
   }
 

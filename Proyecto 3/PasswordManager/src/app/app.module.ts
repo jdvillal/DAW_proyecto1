@@ -22,6 +22,7 @@ import { ConfigComponent } from './config/config.component';
 import { ApiInfoComponent } from './api-info/api-info.component';
 import { LlaveroComponent } from './llavero/llavero.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
