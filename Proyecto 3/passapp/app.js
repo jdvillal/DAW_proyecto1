@@ -40,20 +40,6 @@ app.use('/login',loginRouter);
 app.use('/', auth, indexRouter);
 app.use('/api', apiRouter);
 
-app.post('/session/validate', function(req, res, next) {
-  let id = req.body.userID;  
-  let hash = req.body.sessionHash;
-  let is_valid = false;
-
-  for(let i = 0; i < sessionsList.length; i++){
-    if(sessionsList[i].id == id.toString() && sessionsList[i].hash == hash){
-      is_valid = true;
-      break;
-    }
-  }
-  res.json({valid: is_valid});
-});
-
 /*
 app.get('/user/:u', function(req, res, next) {
   let username = (req.params.u);
