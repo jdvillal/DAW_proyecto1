@@ -1,1 +1,33 @@
-<p>llavero works!</p>
+
+<div id="llavero-card" class="card">
+    <div class="card-header">
+        LLavero
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="nav-item" *ngFor="let cuenta of cuentas; index as i; first as isFirst">
+            <div id="li-div">
+                <div id="first-div">
+                    <img id="service-icon-img" src={{cuenta.iconURL}}>
+                </div>
+                <div id="second-div">
+                    <div id="inner-second-div">
+                        <span id="service-span" class="nav-link-span">{{cuenta.nombre}}</span>
+                        <span id="mail-span" class="material-symbols-outlined">{{cuenta.correo}}</span>
+                    </div>
+                </div>
+                <div id="tird-div">
+                    <button mat-icon-button id="copy-btn" type="button" class="btn btn-outline-primary copy-btn" matTooltip="Mostrar detalles">
+                        <mat-icon class="nav-link-icon">visibility</mat-icon>
+                    </button>
+                </div>
+                <div id="fourth-div">
+                    <button mat-icon-button id="copy-btn" type="button" class="btn btn-outline-primary copy-btn" matTooltip="Copiar contraseña al portapapeles">
+                        <mat-icon class="nav-link-icon">content_copy</mat-icon>
+                    </button>
+                </div>
+
+            </div>
+        </li>
+    </ul>
+  </div>
+

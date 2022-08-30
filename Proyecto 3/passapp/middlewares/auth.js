@@ -5,6 +5,7 @@ var cors = require('cors');
 
 
 var auth = (req, res, next) => {
+    if ( req.path.includes('api/icons')) return next();
     console.log("\n\n\nmy session from auth", req.session);
 
     usuario.findOne({ where: { username: req.session.user } })

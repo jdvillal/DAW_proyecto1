@@ -6,14 +6,14 @@ let servicios = [
   {nombre: 'Google', siteURL:'https://accounts.google.com/', iconURL:'http://192.168.100.11:3000/api/icons/Google'},
   {nombre: 'Microsoft', siteURL:'https://login.live.com/', iconURL:'http://192.168.100.11:3000/api/icons/Microsoft'},
   {nombre: 'Reddit', siteURL:'https://www.reddit.com/', iconURL:'http://192.168.100.11:3000/api/icons/Reddit'},
-  {nombre: 'Linkedin', siteURL:'https://www.linkedin.com/', iconURL:'http://192.168.100.11:3000api/icons/Linkedin'},
+  {nombre: 'Linkedin', siteURL:'https://www.linkedin.com/', iconURL:'http://192.168.100.11:3000/api/icons/Linkedin'},
   {nombre: 'Twitter', siteURL:'https://twitter.com/', iconURL:'http://192.168.100.11:3000/api/icons/Twitter'},
   {nombre: 'TikTok', siteURL:'https://www.tiktok.com/', iconURL:'http://192.168.100.11:3000/api/icons/TikTok'},
   {nombre: 'Pinterest', siteURL:'https://www.pinterest.com/', iconURL:'http://192.168.100.11:3000/api/icons/Pinterest'},
   {nombre: 'SnapChat', siteURL:'https://www.snapchat.com/', iconURL:'http://192.168.100.11:3000/api/icons/SnapChat'},
   {nombre: 'Instagram', siteURL:'https://www.instagram.com/', iconURL:'http://192.168.100.11:3000/api/icons/Instagram'},
   {nombre: 'Netflix', siteURL:'https://www.netflix.com', iconURL:'http://192.168.100.11:3000/api/icons/Netflix'},
-  {nombre: 'DisneyPlus', siteURL:'https://www.disneyplus.com/login', iconURL:'http://192.168.100.11:3000/api/icons/Login'},
+  {nombre: 'DisneyPlus', siteURL:'https://www.disneyplus.com/login', iconURL:'http://192.168.100.11:3000/api/icons/DisneyPlus'},
   {nombre: 'HBO-Max', siteURL:'https://play.hbomax.com/signIn', iconURL:'http://192.168.100.11:3000/api/icons/HBO-Max'},
   {nombre: 'Hulu', siteURL:'https://auth.hulu.com/web/login', iconURL:'http://192.168.100.11:3000/api/icons/Hulu'}
 

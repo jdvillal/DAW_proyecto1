@@ -1,1 +1,16 @@
-<p>cuenta-info works!</p>
+<div id="account-info-div">
+    <h1 id="title">Información de la cuenta</h1>
+    <div id="image-div">
+        <img src="../assets/usuario.svg" alt="User Icon" />
+    </div>
+    <h2 id="subtitle">{{datos_cuenta.username}}</h2>
+    <div id="data-div">
+        <div id="inner-data-div">
+            <p id="nombres-p">Nombre: </p> <span>{{datos_cuenta.nombre}} {{datos_cuenta.apellido}}</span>
+            <p id="fecha-p">Fecha nacimiento: </p> <span>{{datos_cuenta.fechaNacimiento.toString().substring(0, 10)}}</span>
+            <p id="fecha-desde-p">Usuario desde: </p> <span>{{datos_cuenta.fechaRegistro.toString().substring(0, 10)}}</span>
+            <p id="tipo-p">Tipo de cuenta: </p> <span>Undefined</span>
+        </div>
+    </div>
+    
+</div>

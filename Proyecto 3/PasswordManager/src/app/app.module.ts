@@ -10,6 +10,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav'
 import {MatDividerModule} from '@angular/material/divider'
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatCardModule} from '@angular/material/card';
 import { CookieModule } from 'ngx-cookie';
 
 import { HashLocationStrategy, LocationStrategy  } from '@angular/common';
@@ -44,6 +45,7 @@ import { LlaveroComponent } from './llavero/llavero.component';
     MatSidenavModule,
     MatDividerModule,
     MatTooltipModule,
+    MatCardModule,
     BrowserAnimationsModule
   ],
   providers: [

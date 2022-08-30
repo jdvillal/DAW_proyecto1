@@ -1,0 +1,63 @@
+#llavero-card{
+    max-width: 700px;
+}
+
+.list-btn{
+    width: 100%;
+    height: 100%;
+    border-radius: 0%;
+    margin: 0%;
+    border-color: transparent;
+}
+.copy-btn{
+    padding: 0%;
+    padding-top: 2%;
+    border-color: transparent;
+}
+
+#li-div{
+    display: grid;
+    align-items: center;
+    grid-template-areas: "a b c d";
+    grid-template-columns: 1fr 3fr 0.5fr 0.5fr;
+
+}
+
+#service-icon-img{
+    width: 90%;
+    height: 90%;
+    padding-top: 5%;
+    padding-left: 5%;
+    justify-self: auto;
+}
+
+
+#first-div{
+    justify-items: center;
+    width: 60px;
+    height: 60px;
+    grid-area: a;
+}
+
+#second-div{
+    grid-area: b;
+}
+#tird-div{
+    grid-area: c;
+}
+#fourth-div{
+    grid-area: d;
+}
+
+#inner-second-div{
+    display: grid;
+    grid-template-areas:    "x"
+                            "y";
+}
+
+#service-span{
+    grid-area: x;
+}
+#mail-span{
+    grid-area: y;
+}

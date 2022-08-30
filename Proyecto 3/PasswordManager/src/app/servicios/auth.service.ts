@@ -12,18 +12,18 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   logIn(loginData: LoginData) {
-    return this.http.post('http://localhost:3000/login',loginData, {withCredentials: true})
+    return this.http.post('http://192.168.100.11:3000/login',loginData, {withCredentials: true})
   }
 
   verifySession(){
     const headers= new HttpHeaders()
     .set('content-type', 'application/json')
     .set('Access-Control-Allow-Origin', '*');
-    return this.http.post('http://localhost:3000/login/session', {}, {withCredentials: true});
+    return this.http.post('http://192.168.100.11:3000/login/session', {}, {withCredentials: true});
   }
 
   logOut(){
-    return this.http.post('http://localhost:3000/login/out', {}, {withCredentials: true});
+    return this.http.post('http://192.168.100.11:3000/login/out', {}, {withCredentials: true});
   }
 
 }
